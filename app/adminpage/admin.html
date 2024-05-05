@@ -61,32 +61,19 @@
             window.location.replace("/");
         }
 
-        const flights = [{
-            firstName: "abc",
-            middleName: "def",
-            lastName: "ghi",
-            email: "abc@e",
-            phone: "+25192303943",
-            address: "1234 main street",
-            source: "Addis",
-            destination: "hawassa",
-            departureDate: "12/12/12",
-            departureTime: "07:43",
-        }, {
-            firstName: "zzz",
-            middleName: "fff",
-            lastName: "uui",
-            email: "fsf@e",
-            phone: "+00000000000",
-            address: "677 sub street",
-            source: "Mekelle",
-            destination: "Jimma",
-            departureDate: "07/07/07",
-            departureTime: "08:45",
-        }, ];
+        $.ajax({
+            url: "/flights/",
+            dataType: "json",
+            type: "get",
+            contentType: "application/json",
+            success: function(res) {
+                addFlights(res);
+            },
+        });
 
-        flights.forEach((flight) => {
-            $("tbody").append(`
+        function addFlights(flights) {
+            flights.forEach((flight) => {
+                $("tbody").append(`
             <tr>
                     <th scope="row">${flights.indexOf(flight) + 1}</th>
                     <td>${flight.firstName}</td>
@@ -107,7 +94,8 @@
                     )})" class="btn btn-danger">Remove</button></td>
                 </tr> 
             `);
-        });
+            });
+        }
 
         function editButton(index) {
             flights.splice(index, 1);
@@ -120,6 +108,16 @@
 
         $(document).ready(function() {
             const tbody = $("tbody");
+            $.ajax({
+                url: "/flights/",
+                dataType: "json",
+                type: "get",
+                contentType: "application/json",
+                success: function(res) {
+                    console.log(res);
+                    alert(res);
+                },
+            });
         });
     </script>
 </body>
