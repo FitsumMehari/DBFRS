@@ -2,6 +2,18 @@ const router = require("express").Router();
 const Flight = require("../models/Flight");
 const AvailableFlights = require("../models/AvailableFlight");
 
+// Get available flights
+router.get("/available", async(req, res, next) => {
+    try {
+        await AvailableFlights.find().then((availableFlights) => {
+            console.log(availableFlights);
+            res.status(200).json(availableFlights);
+        });
+    } catch (error) {
+        return next(error);
+    }
+});
+
 // Get all flights
 router.get("/", async(req, res, next) => {
     try {
@@ -16,25 +28,15 @@ router.get("/", async(req, res, next) => {
 // Get single flight
 router.get("/:id", getFlight, async(req, res, next) => {
     try {
-        req.status(200).json(res.flight);
+        await res.status(200).json(res.flight);
     } catch (error) {
         return next(error);
     }
 });
 
-// Get available flights
-router.get("/available", async(req, res, next) => {
-    try {
-        await AvailableFlights.find().then((flights) => {
-            console.log(flights);
-            res.status(200).json(flights);
-        });
-    } catch (error) {
-        return next(error);
-    }
-});
 
-// Add flight
+
+// Add Locations
 router.post("/", async(req, res, next) => {
     const newAvaialableFlight = new AvailableFlights({
         source: req.body.source,
@@ -76,6 +78,29 @@ router.delete("/:id", getFlight, async(req, res, next) => {
         console.log(res.flight);
         await res.flight.deleteOne();
         res.json({ message: "Deleted flight" });
+    } catch (error) {
+        return next(error);
+    }
+});
+
+// Edit a single reserved flight
+router.put("/:id", async(req, res, next) => {
+    const id = req.params.id;
+    try {
+        await Flight.findByIdAndUpdate({ "_id": id }, {
+
+            firstName: req.body.firstName,
+            middleName: req.body.middleName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            phone: req.body.phone,
+            address: req.body.address,
+            source: req.body.lastName,
+            destination: req.body.destination,
+            departureDate: req.body.departureDate,
+            departureTime: req.body.destination,
+        });
+        res.status(200).json({ "message": "update successful" });
     } catch (error) {
         return next(error);
     }
