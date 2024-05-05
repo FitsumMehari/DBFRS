@@ -152,8 +152,7 @@
     </div>
 
     <script>
-
-const flightId = localStorage.getItem("flightId");
+      const flightId = localStorage.getItem("flightId");
 
       $.ajax({
         url: `/flights/${flightId}`,
@@ -181,8 +180,6 @@ const flightId = localStorage.getItem("flightId");
           flight.departureTime
         );
       }
-
-
 
       $(document).ready(function () {
         $.ajax({
@@ -262,6 +259,7 @@ const flightId = localStorage.getItem("flightId");
               alert(data.message);
 
               window.location.replace("/");
+              localStorage.removeItem("flightId");
             },
             error: function (jqxhr, textStatus, errorThrown) {
               console.log(errorThrown);
