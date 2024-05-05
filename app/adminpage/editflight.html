@@ -13,7 +13,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">FRS</a>
+        <a class="navbar-brand" href="/">FRS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -152,7 +152,8 @@
     </div>
 
     <script>
-      const flightId = localStorage.getItem("flightId");
+
+const flightId = localStorage.getItem("flightId");
 
       $.ajax({
         url: `/flights/${flightId}`,
@@ -173,9 +174,16 @@
         const address = $("#inputAddress").val(flight.address);
         const source = $("#inputSource").val(flight.source);
         const destination = $("#inputDestination").val(flight.destination);
-        const departureDate = $("#inputDepartureDate").val(flight.departureDate);
-        const departureTime = $("#inputDepartureTime").val(flight.departureTime);
+        const departureDate = $("#inputDepartureDate").val(
+          flight.departureDate
+        );
+        const departureTime = $("#inputDepartureTime").val(
+          flight.departureTime
+        );
       }
+
+
+
       $(document).ready(function () {
         $.ajax({
           url: "/flights/available",
@@ -186,15 +194,15 @@
             addFlights(res);
           },
         });
-        // function addFlights(res) {
-        //   console.log(res);
-        //   res.forEach((locationPair) => {
-        //     $("#inputSource").append(`<option>${locationPair.source}</option>`);
-        //     $("#inputDestination").append(
-        //       `<option>${locationPair.destination}</option>`
-        //     );
-        //   });
-        // }
+        function addFlights(res) {
+          console.log(res);
+          res.forEach((locationPair) => {
+            $("#inputSource").append(`<option>${locationPair.source}</option>`);
+            $("#inputDestination").append(
+              `<option>${locationPair.destination}</option>`
+            );
+          });
+        }
 
         const button = $("#reserve");
         const form = $("#flight-form");
@@ -233,7 +241,7 @@
           );
 
           $.ajax({
-            url: "/flights/reserve",
+            url: `/flights/${flightId}`,
             dataType: "json",
             type: "put",
             contentType: "application/json",
