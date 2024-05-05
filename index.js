@@ -5,6 +5,10 @@ const mongoose = require('mongoose');
 const path = require("path");
 
 
+// const authRoute = require("./routes/auth");
+const flightsRoute = require("./routes/flights");
+
+
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
@@ -33,6 +37,12 @@ mongoose.connect(
         console.log(error);
     }
 )
+
+
+
+
+// app.use("/auth", authRoute);
+app.use("/flights", flightsRoute);
 
 
 //ROUTE NOT FOUND
