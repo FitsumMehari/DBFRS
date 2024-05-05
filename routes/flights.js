@@ -61,4 +61,31 @@ router.post("/reserve", async(req, res, next) => {
     }
 });
 
+// Remove a reserved flight
+router.delete("/:id", getFlight, async(req, res, next) => {
+    try {
+        console.log(res.flight);
+        await res.flight.deleteOne();
+        res.json({ message: "Deleted flight" });
+    } catch (error) {
+        return next(error);
+    }
+});
+
+async function getFlight(req, res, next) {
+    let flight;
+    try {
+        flight = await Flight.findById(req.params.id);
+        if (flight == null) {
+            return res.status(404).json({ message: "Can not find flight" });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+
+    res.flight = flight;
+    next();
+}
+
+
 module.exports = router;
