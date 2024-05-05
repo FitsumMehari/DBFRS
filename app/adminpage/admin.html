@@ -13,7 +13,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">FRS</a>
+        <a class="navbar-brand" href="/">FRS</a>
         <button id="logoutbutton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -24,8 +24,12 @@
             >
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="javascript:logout();"
-              >Log Out <span class="sr-only"></span
+            <a class="nav-link" href="/adminpage/addfight.html"
+              >Add Flight <span class="sr-only"></span
+            ></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="javascript:logout();">Log Out <span class="sr-only"></span
             ></a>
                 </li>
             </ul>
@@ -35,24 +39,26 @@
     </nav>
 
     <div class="container" style="margin-top: 20px">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Middle Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Source</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Destination</th>
-                    <th scope="col">Departure Date</th>
-                    <th scope="col">Departure Time</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Middle Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Source</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Departure Date</th>
+                        <th scope="col">Departure Time</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </div>
 
     <script defer>
@@ -105,20 +111,6 @@
         function removeButton(e) {
             console.log(e);
         }
-
-        $(document).ready(function() {
-            const tbody = $("tbody");
-            $.ajax({
-                url: "/flights/",
-                dataType: "json",
-                type: "get",
-                contentType: "application/json",
-                success: function(res) {
-                    console.log(res);
-                    alert(res);
-                },
-            });
-        });
     </script>
 </body>
 
