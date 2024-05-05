@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const path = require("path");
 
 
-// const authRoute = require("./routes/auth");
+const authRoute = require("./routes/auth");
 const flightsRoute = require("./routes/flights");
 
 
@@ -41,7 +41,7 @@ mongoose.connect(
 
 
 
-// app.use("/auth", authRoute);
+app.use("/auth", authRoute);
 app.use("/flights", flightsRoute);
 
 
