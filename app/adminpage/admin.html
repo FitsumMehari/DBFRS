@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FRS</title>
+
+    <link rel="stylesheet" href="/bootstrap.min.css" />
+    <script src="/jquery.js"></script>
+    <script src="/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">FRS</a>
+        <button id="logoutbutton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="javascript:logout();"
+              >Log Out <span class="sr-only"></span
+            ></a>
+                </li>
+            </ul>
+
+            <span class="navbar-text"> Flight Reservation System </span>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 20px">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Middle Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Source</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Departure Date</th>
+                    <th scope="col">Departure Time</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script defer>
+        function logout() {
+            console.log("logout works");
+            window.location.replace("/");
+        }
+
+        const flights = [{
+            firstName: "abc",
+            middleName: "def",
+            lastName: "ghi",
+            email: "abc@e",
+            phone: "+25192303943",
+            address: "1234 main street",
+            source: "Addis",
+            destination: "hawassa",
+            departureDate: "12/12/12",
+            departureTime: "07:43",
+        }, {
+            firstName: "zzz",
+            middleName: "fff",
+            lastName: "uui",
+            email: "fsf@e",
+            phone: "+00000000000",
+            address: "677 sub street",
+            source: "Mekelle",
+            destination: "Jimma",
+            departureDate: "07/07/07",
+            departureTime: "08:45",
+        }, ];
+
+        flights.forEach((flight) => {
+            $("tbody").append(`
+            <tr>
+                    <th scope="row">${flights.indexOf(flight) + 1}</th>
+                    <td>${flight.firstName}</td>
+                    <td>${flight.middleName}</td>
+                    <td>${flight.lastName}</td>
+                    <td>${flight.email}</td>
+                    <td>${flight.phone}</td>
+                    <td>${flight.address}</td>
+                    <td>${flight.source}</td>
+                    <td>${flight.destination}</td>
+                    <td>${flight.departureDate}</td>
+                    <td>${flight.departureTime}</td>
+                    <td><button type="btn" onclick="editButton(${flights.indexOf(
+                      flight
+                    )})" class="btn btn-warning">Edit</button></td>
+                    <td><button type="btn" onclick="removeButton(${flights.indexOf(
+                      flight
+                    )})" class="btn btn-danger">Remove</button></td>
+                </tr> 
+            `);
+        });
+
+        function editButton(index) {
+            flights.splice(index, 1);
+            console.log(flights);
+        }
+
+        function removeButton(e) {
+            console.log(e);
+        }
+
+        $(document).ready(function() {
+            const tbody = $("tbody");
+        });
+    </script>
+</body>
+
+</html>
