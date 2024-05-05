@@ -105,8 +105,9 @@
         }
 
         function editButton(index) {
-            flights.splice(index, 1);
-            console.log(flights);
+            let flightId = flightsList[index]._id;
+            localStorage.setItem("flightId", flightId);
+            window.location.href = `/adminpage/editflight.html/`
         }
 
         function removeButton(index) {
