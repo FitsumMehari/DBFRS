@@ -48,7 +48,7 @@
         </div>
 
         <button id="add" type="submit" class="btn btn-primary">
-          Add Flight
+          Add Locations
         </button>
       </form>
     </div>
@@ -98,8 +98,7 @@
             }),
             processData: false,
             success: function (data, textStatus, jQxhr) {
-              alert(data.message);
-
+              alert("Locations Added Successfully!")
               window.location.href = "/adminpage/admin.html";
             },
             error: function (jqxhr, textStatus, errorThrown) {
