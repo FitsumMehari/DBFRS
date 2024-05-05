@@ -13,6 +13,15 @@ router.get("/", async(req, res, next) => {
     }
 });
 
+// Get single flight
+router.get("/:id", getFlight, async(req, res, next) => {
+    try {
+        req.status(200).json(res.flight);
+    } catch (error) {
+        return next(error);
+    }
+});
+
 // Get available flights
 router.get("/available", async(req, res, next) => {
     try {
@@ -86,6 +95,5 @@ async function getFlight(req, res, next) {
     res.flight = flight;
     next();
 }
-
 
 module.exports = router;
