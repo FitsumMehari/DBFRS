@@ -66,7 +66,7 @@
             console.log("logout works");
             window.location.replace("/");
         }
-
+        var flightsList = []
         $.ajax({
             url: "/flights/",
             dataType: "json",
@@ -78,6 +78,7 @@
         });
 
         function addFlights(flights) {
+            flightsList = flights;
             flights.forEach((flight) => {
                 $("tbody").append(`
             <tr>
@@ -108,8 +109,28 @@
             console.log(flights);
         }
 
-        function removeButton(e) {
-            console.log(e);
+        function removeButton(index) {
+            console.log(flightsList[index]._id);
+            let flightId = flightsList[index]._id;
+            $.ajax({
+                url: `/flights/${flightId}`,
+                dataType: "json",
+                type: "delete",
+                contentType: "application/json",
+                // data: JSON.stringify({
+                //     source: sourceLocation,
+                //     destination: destinationLocation,
+                // }),
+                // processData: false,
+                success: function(data, textStatus, jQxhr) {
+                    alert(data.message);
+
+                    window.location.href = "/adminpage/admin.html";
+                },
+                error: function(jqxhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                },
+            });
         }
     </script>
 </body>
