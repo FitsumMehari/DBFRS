@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>FRS</title>
 
     <link rel="stylesheet" href="/bootstrap.min.css" />
     <script src="/jquery.js"></script>
@@ -20,15 +20,9 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a
+                    <a class="nav-link" href="/login/login.html">Admin <span class="sr-only">(current)</span></a
             >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
             </ul>
             <span class="navbar-text"> Flight Reservation System </span>
         </div>
@@ -99,7 +93,7 @@
                 </div>
             </div>
             <button id="reserve" type="submit" class="btn btn-primary">
-          Sign in
+          Reserve Flight
         </button>
         </form>
     </div>
@@ -114,7 +108,8 @@
             });
             const button = $("#reserve");
             const form = $("#flight-form");
-            button.on("click", () => {
+            button.on("click", (e) => {
+                e.preventDefault();
                 if ($("#inputSource").val() === $("#inputDestination").val()) {
                     alert("Please select a destination different from the source!");
                     return;
