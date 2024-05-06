@@ -58,9 +58,58 @@
         </div>
     </nav>
 
-    <div class="container" style="margin-top: 20px"></div>
+    <div class="container" style="margin-top: 20px">
+        <h5>Flight Id: </h5>
+        <h4>123456789</h4>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="flname">Flight Name</label>
+                    <input type="text" class="form-control" id="flname" placeholder="Flight Name" />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="price">Price</label>
+                    <input type="text" class="form-control" id="price" placeholder="Price" />
+                </div>
 
-    <footer class="bg-body-tertiary text-center text-lg-start">
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="source">Source</label>
+                    <input type="text" class="form-control" id="source" placeholder="Source" />
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="destination">Destination</label>
+                    <input type="text" class="form-control" id="destination" placeholder="Destination" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="date">Date</label>
+                    <input type="date" class="form-control" id="date" />
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="dtime">Departure Time</label>
+                    <input type="time" class="form-control" id="dtime" />
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="atime">Arrival Time</label>
+                    <input type="time" class="form-control" id="atime" />
+                </div>
+
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add</button>
+            <button type="reset" class="btn btn-warning">Cancel</button>
+        </form>
+    </div>
+
+    <footer class="bg-body-tertiary text-center text-lg-start" style="position: absolute; bottom: 0; width: 100%">
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05)">
             © 2024 Copyright:
