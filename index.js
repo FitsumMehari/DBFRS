@@ -20,8 +20,11 @@ app.use(express.json());
 
 app.use(express.static('app'));
 
+// app.get('/', (req, res) => {
+//     res.sendFile(path.resolve('./app/landingpage/landingpage.html'))
+// });
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve('./app/landingpage/landingpage.html'))
+    res.sendFile(path.resolve('./app/page_ticket_report/index.html'))
 });
 
 // The following segment has been commented temprarily

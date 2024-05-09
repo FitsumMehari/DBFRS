@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Flight = require("../models/Flight");
-const AvailableFlights = require("../models/AvailableFlight");
+const AvailableFlights = require("../models/Ticket");
 
 // Get available flights
 router.get("/available", async(req, res, next) => {
