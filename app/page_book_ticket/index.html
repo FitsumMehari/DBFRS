@@ -154,9 +154,31 @@
       <div>
         <h5>Selected Flight Number: <b>ET-103</b></h5>
         <h5>Price Per Seat: <b>4500 ETB</b></h5>
-        <label for="seats">Number of seats</label>
-        <input id="seats" type="number">
-        <button class="btn btn-primary">Book Flight</button>
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="seats">Number of Seats</label>
+              <input
+                type="number"
+                class="form-control"
+                id="seats"
+                placeholder="number of seats"
+              />
+            </div>
+            <div class="form-group col-md-4">
+              <label for="customerId">CustomerId</label>
+              <input
+                type="text"
+                class="form-control"
+                id="customerId"
+                placeholder="customerId"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <button class="btn btn-info">Book Ticket</button>
+          </div>
+        </form>
       </div>
     </div>
 
