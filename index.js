@@ -6,7 +6,9 @@ const path = require("path");
 
 
 const authRoute = require("./routes/auth");
-const flightsRoute = require("./routes/flights");
+// const flightsRoute = require("./routes/flights");
+const flight = require("./routes/flight");
+const customer = require("./routes/customer");
 
 
 dotenv.config();
@@ -45,7 +47,9 @@ mongoose.connect(
 
 
 app.use("/auth", authRoute);
-app.use("/flights", flightsRoute);
+// app.use("/flights", flightsRoute);
+// app.use("/flight", flight);
+app.use("/customer", customer);
 
 
 //ROUTE NOT FOUND
