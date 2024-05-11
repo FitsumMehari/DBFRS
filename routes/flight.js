@@ -60,4 +60,6 @@ router.get("/", async(req, res, next) => {
     }
 });
 
+// get single flight
+
 module.exports = router;

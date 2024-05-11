@@ -83,7 +83,7 @@
       </div>
     </nav>
 
-    <div class="container" style="margin-top: 20px">
+    <div id="table-container" class="container" style="margin-top: 20px">
       <table class="table table-striped">
         <thead>
           <tr>
@@ -94,63 +94,13 @@
             <th scope="col">Destination</th>
             <th scope="col">Departure Time</th>
             <th scope="col">Arrival Time</th>
+            <th scope="col">Departure Date</th>
             <th scope="col">Price</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th scope="col">1</th>
-            <th scope="col">102</th>
-            <th scope="col">ET-103</th>
-            <th scope="col">Addis Ababa</th>
-            <th scope="col">Mekelle</th>
-            <th scope="col">09:24 AM</th>
-            <th scope="col">08:34 AM</th>
-            <th scope="col">4500 ETB</th>
-          </tr>
-          <tr>
-            <th scope="col">2</th>
-            <th scope="col">102</th>
-            <th scope="col">ET-103</th>
-            <th scope="col">Addis Ababa</th>
-            <th scope="col">Mekelle</th>
-            <th scope="col">09:24 AM</th>
-            <th scope="col">08:34 AM</th>
-            <th scope="col">4500 ETB</th>
-          </tr>
-          <tr>
-            <th scope="col">2</th>
-            <th scope="col">102</th>
-            <th scope="col">ET-103</th>
-            <th scope="col">Addis Ababa</th>
-            <th scope="col">Mekelle</th>
-            <th scope="col">09:24 AM</th>
-            <th scope="col">08:34 AM</th>
-            <th scope="col">4500 ETB</th>
-          </tr>
-          <tr>
-            <th scope="col">2</th>
-            <th scope="col">102</th>
-            <th scope="col">ET-103</th>
-            <th scope="col">Addis Ababa</th>
-            <th scope="col">Mekelle</th>
-            <th scope="col">09:24 AM</th>
-            <th scope="col">08:34 AM</th>
-            <th scope="col">4500 ETB</th>
-          </tr>
-          <tr>
-            <th scope="col">2</th>
-            <th scope="col">102</th>
-            <th scope="col">ET-103</th>
-            <th scope="col">Addis Ababa</th>
-            <th scope="col">Mekelle</th>
-            <th scope="col">09:24 AM</th>
-            <th scope="col">08:34 AM</th>
-            <th scope="col">4500 ETB</th>
-          </tr>
-        </tbody>
+        <tbody></tbody>
       </table>
-      <button class="btn btn-primary">Print Table</button>
+      <button id="print-btn" class="btn btn-primary">Print Table</button>
     </div>
 
     <footer class="bg-body-tertiary text-center text-lg-start">
@@ -164,6 +114,50 @@
                             </div>
                             <!-- Copyright -->
                             </footer>
+
+                            <style type="text/css">
+                                @media print {
+                                    #print-btn,
+                                    footer {
+                                        visibility: hidden;
+                                    }
+                                }
+                            </style>
+
+                            <script>
+                                $("#print-btn").on("click", (e) => {
+                                    e.preventDefault();
+                                    window.print();
+                                });
+                                $.ajax({
+                                    url: `/flight/`,
+                                    dataType: "json",
+                                    type: "get",
+                                    success: function(data, textStatus, jQxhr) {
+                                        console.log(data.length);
+
+                                        for (let i = 0; i < data.length; i++) {
+                                            console.log(data[i].flightName);
+                                            $("tbody").append(`
+                                            <tr>
+                                      <td>${i}</td>  
+                                      <td>${data[i].flightId}</td>  
+                                      <td>${data[i].flightName}</td>  
+                                      <td>${data[i].source}</td>  
+                                      <td>${data[i].destination}</td>  
+                                      <td>${data[i].departureTime}</td>  
+                                      <td>${data[i].arrivalTime}</td>  
+                                      <td>${data[i].departureDate}</td>  
+                                      <td>${data[i].price}</td>  
+                                      </tr>
+                                        `);
+                                        }
+                                    },
+                                    error: function(jQxhr, textStatus, errorThrown) {
+                                        console.log(errorThrown);
+                                    },
+                                });
+                            </script>
 </body>
 
 </html>
