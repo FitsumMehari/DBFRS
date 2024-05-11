@@ -33,22 +33,6 @@ router.post("/", async(req, res, next) => {
     }
 });
 
-// search flight
-
-// router.get("/:id", async(req, res, next) => {
-//     const customerId = req.params.id.split(":")[1];
-//     console.log(customerId);
-//     try {
-//         const customer = await Customer.find({ customerId: customerId });
-//         if (customer == null) {
-//             return res.status(404).json({ message: "No Customer Found!" });
-//         } else {
-//             return res.status(200).json(customer[0]);
-//         }
-//     } catch (error) {}
-// });
-
-// get all flights
 
 router.get("/", async(req, res, next) => {
     try {
@@ -61,5 +45,24 @@ router.get("/", async(req, res, next) => {
 });
 
 // get single flight
+
+router.post("/single", async(req, res, next) => {
+    const source = req.body.source;
+    const destination = req.body.destination;
+
+    try {
+        const flight = await Flight.find({
+            source: source,
+            destination: destination,
+        });
+        if (flight == null) {
+            return res.status(404).json({ message: "No flight Found!" });
+        } else {
+            return res.status(200).json(flight);
+        }
+    } catch (error) {
+        next(error);
+    }
+});
 
 module.exports = router;
