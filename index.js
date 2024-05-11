@@ -48,7 +48,7 @@ mongoose.connect(
 
 app.use("/auth", authRoute);
 // app.use("/flights", flightsRoute);
-// app.use("/flight", flight);
+app.use("/flight", flight);
 app.use("/customer", customer);
 
 
