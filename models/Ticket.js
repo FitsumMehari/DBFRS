@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const TicketSchema = new mongoose.Schema({
+    customerId: {
+        type: String,
+        required: true,
+    },
     firstName: {
         type: String,
         required: true,
