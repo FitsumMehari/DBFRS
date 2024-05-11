@@ -9,6 +9,7 @@ const authRoute = require("./routes/auth");
 // const flightsRoute = require("./routes/flights");
 const flight = require("./routes/flight");
 const customer = require("./routes/customer");
+const ticket = require("./routes/ticket");
 
 
 dotenv.config();
@@ -50,6 +51,7 @@ app.use("/auth", authRoute);
 // app.use("/flights", flightsRoute);
 app.use("/flight", flight);
 app.use("/customer", customer);
+app.use("/ticket", ticket);
 
 
 //ROUTE NOT FOUND
