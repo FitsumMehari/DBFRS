@@ -79,4 +79,18 @@ router.get("/:id", async(req, res, next) => {
     } catch (error) {}
 });
 
+// get all customers
+
+router.get("/all", async(req, res, next) => {
+
+    try {
+        const customer = await Customer.find();
+        if (customer == null) {
+            return res.status(404).json({ message: "No Customer Found!" });
+        } else {
+            return res.status(200).json(customer);
+        }
+    } catch (error) {}
+});
+
 module.exports = router;
