@@ -46,7 +46,7 @@ router.put("/", async(req, res, next) => {
     const phoneNumber = req.body.phoneNumber;
 
     try {
-        await Customer.findOneAndUpdate({ customerId: customerId }, {
+        let customerFound = await Customer.findOneAndUpdate({ customerId: customerId }, {
             $set: {
                 customerId: customerId,
                 firstName: firstName,
@@ -58,7 +58,6 @@ router.put("/", async(req, res, next) => {
                 phoneNumber: phoneNumber,
             },
         });
-
         res.status(200).json({ message: "update successful" });
     } catch (error) {
         next(error);

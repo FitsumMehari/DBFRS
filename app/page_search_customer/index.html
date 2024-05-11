@@ -183,7 +183,7 @@
         </div>
 
         <button id="add-btn" type="submit" class="btn btn-primary">
-Update
+          Update
         </button>
         <button type="reset" class="btn btn-warning">Cancel</button>
       </form>
@@ -214,6 +214,7 @@ Update
                                         dataType: "json",
                                         type: "get",
                                         success: function(data, textStatus, jQxhr) {
+                                            console.log(jQxhr.status);
                                             console.log(data);
                                             $("#fname").val(data.firstName);
                                             $("#lname").val(data.lastName);
@@ -221,13 +222,17 @@ Update
                                             $("#inputAddress").val(data.address);
                                             $("#dateofbirth").val(data.dateOfBirth);
                                             // const gender = $("#gender:checked").val();
-                                            if (data.gender === "female") $("#female").prop("checked", true)
-                                            if (data.gender === "male") $("#male").prop("checked", true)
+                                            if (data.gender === "female") {
+                                                $("#female").prop("checked", true);
+                                            }
+                                            if (data.gender === "male") {
+                                                $("#male").prop("checked", true);
+                                            }
 
                                             // const gender = $("input[type='radio'][name='gender']:checked").val();
                                             $("#phone").val(data.phoneNumber);
                                         },
-                                        error: function(jqxhr, textStatus, errorThrown) {
+                                        error: function(jQxhr, textStatus, errorThrown) {
                                             console.log(errorThrown);
                                         },
                                     });
@@ -255,7 +260,7 @@ Update
                                         dateOfBirth,
                                         gender,
                                         phoneNumber
-                                    );
+                                    )
                                     $.ajax({
                                         url: "/customer/",
                                         dataType: "json",
@@ -273,10 +278,14 @@ Update
                                         }),
                                         processData: false,
                                         success: function(data, textStatus, jQxhr) {
-                                            alert("Locations Added Successfully!");
+                                            if (jQxhr.status == 404) {
+                                                alert("Error!");
+                                            }
+
+                                            alert("Successful!");
                                             window.location.href = "/";
                                         },
-                                        error: function(jqxhr, textStatus, errorThrown) {
+                                        error: function(jQxhr, textStatus, errorThrown) {
                                             console.log(errorThrown);
                                         },
                                     });
