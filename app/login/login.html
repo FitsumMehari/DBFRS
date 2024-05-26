@@ -60,11 +60,10 @@
 
     <script>
       $(document).ready(function () {
-
         const button = $("#login");
         const form = $("#flight-form");
         button.on("click", (e) => {
-            e.preventDefault();
+          e.preventDefault();
           console.log("login works");
           login();
         });
@@ -87,12 +86,12 @@
             processData: false,
             success: function (data, textStatus, jQxhr) {
               alert(data.message);
-
-              history.back()
+              localStorage.setItem("user_token", "fscsc#34343434");
+              history.back();
             },
             error: function (jqxhr, textStatus, errorThrown) {
               console.log(errorThrown);
-              alert("Login Failed!")
+              alert("Login Failed!");
             },
           });
         }
