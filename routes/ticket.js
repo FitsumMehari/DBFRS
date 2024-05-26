@@ -74,6 +74,16 @@ router.post("/", async(req, res, next) => {
 
 });
 
+router.get("/", async(req, res, next) => {
+    try {
+        await Ticket.find().then((allTickets) => {
+            res.status(200).json(allTickets);
+        });
+    } catch (error) {
+        next(error);
+    }
+});
+
 
 
 module.exports = router;
