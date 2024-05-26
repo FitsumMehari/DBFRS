@@ -257,26 +257,26 @@
                                                 alert("Error!");
                                             }
                                             console.log(data);
-                                            for (let i = 0; i < data.length; i++) {
-                                                console.log(data[i].source);
-                                                $("tbody").append(`
-                                            <tr>
-                                      <td>${i}</td>  
-                                      <td>${data[i].flightId}</td>  
-                                      <td>${data[i].flightName}</td>  
-                                      <td>${data[i].source}</td>  
-                                      <td>${data[i].destination}</td>  
-                                      <td>${data[i].departureTime}</td>  
-                                      <td>${data[i].arrivalTime}</td>  
-                                      <td>${data[i].departureDate}</td>  
-                                      <td>${data[i].price}</td>  
-                                      <td><button onclick="selectFlight(${data[i].flightId}, ${data[i].price})" class="btn btn-info">Select</button></td>  
-                                      </tr>
-                                        `);
-                                            }
+                                            //       for (let i = 0; i < data.length; i++) {
+                                            //           console.log(data[i].source);
+                                            //           $("tbody").append(`
+                                            //       <tr>
+                                            // <td>${i}</td>  
+                                            // <td>${data[i].flightId}</td>  
+                                            // <td>${data[i].flightName}</td>  
+                                            // <td>${data[i].source}</td>  
+                                            // <td>${data[i].destination}</td>  
+                                            // <td>${data[i].departureTime}</td>  
+                                            // <td>${data[i].arrivalTime}</td>  
+                                            // <td>${data[i].departureDate}</td>  
+                                            // <td>${data[i].price}</td>  
+                                            // <td><button onclick="selectFlight(${data[i].flightId}, ${data[i].price})" class="btn btn-info">Select</button></td>  
+                                            // </tr>
+                                            //   `);
+                                            //       }
 
-                                            // alert("Successful!");
-                                            // window.location.href = "/";
+                                            alert("Booking Successful!");
+                                            window.location.href = "/";
                                         },
                                         error: function(jQxhr, textStatus, errorThrown) {
                                             console.log(errorThrown);
