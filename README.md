@@ -13,7 +13,7 @@ This is a project for database practices titles Flight Reservation System!
 
 By practicing on this flight reservation system project, we the students, have learnt how to connect applications to database servers, and also have a hands-on practice on manipulating databases using high level programming languages. In short, we have learnt how to develope a database management system of our own.
 
-Database used: MongoDB (NoSQL) database
+<Database used: MongoDB (NoSQL) database.>
 Server Side Technologies: nodeJS, expressJS, mongoose, dotenv
 Frontend Technologies: html5, css3, bootstrap, javascript, jquery
 
