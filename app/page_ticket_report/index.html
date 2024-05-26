@@ -101,7 +101,7 @@
             <th scope="col">Price</th>
           </tr>
         </thead>
-        <tbody id="ticket_table"></tbody>
+        <tbody id="flight_table"></tbody>
       </table>
 
       <br>
@@ -121,6 +121,25 @@
           </tr>
         </thead>
         <tbody id="customer_table"></tbody>
+      </table>
+
+      <h4>Tickets</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Customer Id</th>
+            <th scope="col">Flight Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Passport Id</th>
+            <th scope="col">Source</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Departure Time</th>
+            <th scope="col">Arrival Time</th>
+          </tr>
+        </thead>
+        <tbody id="ticket_table"></tbody>
       </table>
       <button id="print-btn" class="btn btn-primary">Print Table</button>
     </div>
@@ -154,11 +173,10 @@
                                     dataType: "json",
                                     type: "get",
                                     success: function(data, textStatus, jQxhr) {
-                                        // console.log(data.length);
 
                                         for (let i = 0; i < data.length; i++) {
-                                            // console.log(data[i].flightName);
-                                            $("#ticket_table").append(`
+                                            console.log(data[i].flightName);
+                                            $("#flight_table").append(`
                                             <tr>
                                       <td>${i}</td>  
                                       <td>${data[i].flightId}</td>  
@@ -197,6 +215,35 @@
                                       <td>${data[i].dateOfBirth}</td>  
                                       <td>${data[i].gender}</td>  
                                       <td>${data[i].phoneNumber}</td>  
+                                      </tr>
+                                        `);
+                                        }
+                                    },
+                                    error: function(jQxhr, textStatus, errorThrown) {
+                                        console.log(errorThrown);
+                                    },
+                                });
+                                $.ajax({
+                                    url: `/ticket/`,
+                                    dataType: "json",
+                                    type: "get",
+                                    success: function(data, textStatus, jQxhr) {
+                                        // console.log(data.length);
+
+                                        for (let i = 0; i < data.length; i++) {
+                                            // console.log(data[i].customerId);
+                                            $("#ticket_table").append(`
+                                            <tr>
+                                      <td>${i}</td>  
+                                      <td>${data[i].customerId}</td>  
+                                      <td>${data[i].flightId}</td>  
+                                      <td>${data[i].firstName}</td>  
+                                      <td>${data[i].lastName}</td>  
+                                      <td>${data[i].passportId}</td>  
+                                      <td>${data[i].source}</td>  
+                                      <td>${data[i].destination}</td>  
+                                      <td>${data[i].departureTime}</td>  
+                                      <td>${data[i].arrivalTime}</td>  
                                       </tr>
                                         `);
                                         }
