@@ -189,6 +189,12 @@
                             </footer>
 
                             <script>
+                                let token = localStorage.getItem("user_token");
+                                if (!token) {
+                                    alert("You need to sign in to access this page!")
+                                    window.location.href = "/login/login.html"
+                                }
+
                                 const generatedCustomerId = Math.floor(Math.random() * 1000000000);
                                 $("#customerId").append(generatedCustomerId);
                                 $("#add-btn").on("click", (e) => {

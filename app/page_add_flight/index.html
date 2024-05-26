@@ -119,6 +119,11 @@
     </footer>
 
     <script>
+        let token = localStorage.getItem("user_token");
+        if (!token) {
+            alert("You need to sign in to access this page!")
+            window.location.href = "/login/login.html"
+        }
         const generatedFlightId = Math.floor(Math.random() * 10000);
         $("#flightId").append(generatedFlightId);
         $("#add-btn").on("click", (e) => {
