@@ -51,7 +51,7 @@
               User
             </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/page_add_user/index.html">Add New User</a>
+                        <a class="dropdown-item" id="logout-btn">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -124,6 +124,12 @@
             alert("You need to sign in to access this page!")
             window.location.href = "/login/login.html"
         }
+
+        $("#logout-btn").on("click", (e) => {
+            localStorage.removeItem("user_token");
+            alert("Logged Out")
+            window.location.replace("/");
+        })
         const generatedFlightId = Math.floor(Math.random() * 10000);
         $("#flightId").append(generatedFlightId);
         $("#add-btn").on("click", (e) => {

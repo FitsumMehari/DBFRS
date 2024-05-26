@@ -75,177 +75,139 @@
               User
             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/page_add_user/index.html">Add New User</a
-              >
+                                <a class="dropdown-item" id="logout-btn">Logout</a>
+                            </div>
+                </li>
+            </ul>
             </div>
-          </li>
-        </ul>
-      </div>
     </nav>
 
     <div class="container" style="margin-top: 20px">
-      <h5>Customer Id:</h5>
-      <h4 id="customerId"></h4>
-      <form>
-        <div class="form-row">
-          <div class="form-group col-md-4">
-            <label for="fname">First Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="fname"
-              placeholder="First Name"
-            />
-          </div>
-          <div class="form-group col-md-4">
-            <label for="lname">Last Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="lname"
-              placeholder="Last Name"
-            />
-          </div>
+        <h5>Customer Id:</h5>
+        <h4 id="customerId"></h4>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="fname">First Name</label>
+                    <input type="text" class="form-control" id="fname" placeholder="First Name" />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="lname">Last Name</label>
+                    <input type="text" class="form-control" id="lname" placeholder="Last Name" />
+                </div>
 
-          <div class="form-group col-md-4">
-            <label for="passport">Passport Id</label>
-            <input
-              type="text"
-              class="form-control"
-              id="passport"
-              placeholder="Passport Id"
-            />
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputAddress">Address</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputAddress"
-            placeholder="1234 Main St"
-          />
-        </div>
-
-        <div class="form-row">
-          <div class="form-group col-md-3">
-            <label for="dateofbirth">Date Of Birth</label>
-            <input type="date" class="form-control" id="dateofbirth" />
-          </div>
-          <div class="form-group form-inline col-md-3">
-            <label style="margin-right: 10px">Gender</label>
-
-            <div class="form-check" style="margin-right: 10px">
-              <input
-                class="form-check-input gender"
-                type="radio"
-                name="gender"
-                id="male"
-                value="male"
-              />
-              <label class="form-check-label" for="male"> Male </label>
+                <div class="form-group col-md-4">
+                    <label for="passport">Passport Id</label>
+                    <input type="text" class="form-control" id="passport" placeholder="Passport Id" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" />
             </div>
 
-            <div class="form-check" style="margin-right: 10px">
-              <input
-                class="form-check-input gender"
-                type="radio"
-                name="gender"
-                id="female"
-                value="female"
-              />
-              <label class="form-check-label" for="female"> Female </label>
-            </div>
-          </div>
-          <div class="form-group col-md-3">
-            <label for="phone">Phone Number</label>
-            <input
-              type="tel"
-              class="form-control"
-              id="phone"
-              placeholder="Phone Number"
-            />
-          </div>
-        </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="dateofbirth">Date Of Birth</label>
+                    <input type="date" class="form-control" id="dateofbirth" />
+                </div>
+                <div class="form-group form-inline col-md-3">
+                    <label style="margin-right: 10px">Gender</label>
 
-        <button id="add-btn" type="submit" class="btn btn-primary">Add</button>
-        <button type="reset" class="btn btn-warning">Cancel</button>
-      </form>
+                    <div class="form-check" style="margin-right: 10px">
+                        <input class="form-check-input gender" type="radio" name="gender" id="male" value="male" />
+                        <label class="form-check-label" for="male"> Male </label>
+                    </div>
+
+                    <div class="form-check" style="margin-right: 10px">
+                        <input class="form-check-input gender" type="radio" name="gender" id="female" value="female" />
+                        <label class="form-check-label" for="female"> Female </label>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Phone Number" />
+                </div>
+            </div>
+
+            <button id="add-btn" type="submit" class="btn btn-primary">Add</button>
+            <button type="reset" class="btn btn-warning">Cancel</button>
+        </form>
     </div>
 
-    <footer
-      class="bg-body-tertiary text-center text-lg-start"
-      style="position: absolute; bottom: 0; width: 100%"
-    >
-      <!-- Copyright -->
-      <div
-        class="text-center p-3"
-        style="background-color: rgba(0, 0, 0, 0.05)"
-      >
-        © 2024 Copyright:
-        <a class="text-body" href="#">Flight Reservation System</a>
-                            </div>
-                            <!-- Copyright -->
-                            </footer>
+    <footer class="bg-body-tertiary text-center text-lg-start" style="position: absolute; bottom: 0; width: 100%">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05)">
+            © 2024 Copyright:
+            <a class="text-body" href="#">Flight Reservation System</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
 
-                            <script>
-                                let token = localStorage.getItem("user_token");
-                                if (!token) {
-                                    alert("You need to sign in to access this page!")
-                                    window.location.href = "/login/login.html"
-                                }
+    <script>
+        let token = localStorage.getItem("user_token");
+        if (!token) {
+            alert("You need to sign in to access this page!")
+            window.location.href = "/login/login.html"
+        }
 
-                                const generatedCustomerId = Math.floor(Math.random() * 1000000000);
-                                $("#customerId").append(generatedCustomerId);
-                                $("#add-btn").on("click", (e) => {
-                                    e.preventDefault();
+        $("#logout-btn").on("click", (e) => {
+            localStorage.removeItem("user_token");
+            alert("Logged Out")
+            window.location.replace("/");
+        })
 
-                                    const customerId = generatedCustomerId;
-                                    const firstName = $("#fname").val();
-                                    const lastName = $("#lname").val();
-                                    const passportId = $("#passport").val();
-                                    const address = $("#inputAddress").val();
-                                    const dateOfBirth = $("#dateofbirth").val();
-                                    // const gender = $("#gender:checked").val();
-                                    const gender = $("input[type='radio'][name='gender']:checked").val();
-                                    const phoneNumber = $("#phone").val();
+        const generatedCustomerId = Math.floor(Math.random() * 1000000000);
+        $("#customerId").append(generatedCustomerId);
+        $("#add-btn").on("click", (e) => {
+            e.preventDefault();
 
-                                    console.log(
-                                        customerId,
-                                        firstName,
-                                        lastName,
-                                        passportId,
-                                        address,
-                                        dateOfBirth,
-                                        gender,
-                                        phoneNumber
-                                    );
-                                    $.ajax({
-                                        url: "/customer/",
-                                        dataType: "json",
-                                        type: "post",
-                                        contentType: "application/json",
-                                        data: JSON.stringify({
-                                            customerId: customerId,
-                                            firstName: firstName,
-                                            lastName: lastName,
-                                            passportId: passportId,
-                                            address: address,
-                                            dateOfBirth: dateOfBirth,
-                                            gender: gender,
-                                            phoneNumber: phoneNumber,
-                                        }),
-                                        processData: false,
-                                        success: function(data, textStatus, jQxhr) {
-                                            alert("Locations Added Successfully!");
-                                            window.location.href = "/";
-                                        },
-                                        error: function(jqxhr, textStatus, errorThrown) {
-                                            console.log(errorThrown);
-                                        },
-                                    });
-                                });
-                            </script>
+            const customerId = generatedCustomerId;
+            const firstName = $("#fname").val();
+            const lastName = $("#lname").val();
+            const passportId = $("#passport").val();
+            const address = $("#inputAddress").val();
+            const dateOfBirth = $("#dateofbirth").val();
+            // const gender = $("#gender:checked").val();
+            const gender = $("input[type='radio'][name='gender']:checked").val();
+            const phoneNumber = $("#phone").val();
+
+            console.log(
+                customerId,
+                firstName,
+                lastName,
+                passportId,
+                address,
+                dateOfBirth,
+                gender,
+                phoneNumber
+            );
+            $.ajax({
+                url: "/customer/",
+                dataType: "json",
+                type: "post",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    customerId: customerId,
+                    firstName: firstName,
+                    lastName: lastName,
+                    passportId: passportId,
+                    address: address,
+                    dateOfBirth: dateOfBirth,
+                    gender: gender,
+                    phoneNumber: phoneNumber,
+                }),
+                processData: false,
+                success: function(data, textStatus, jQxhr) {
+                    alert("Locations Added Successfully!");
+                    window.location.href = "/";
+                },
+                error: function(jqxhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                },
+            });
+        });
+    </script>
 </body>
 
 </html>
