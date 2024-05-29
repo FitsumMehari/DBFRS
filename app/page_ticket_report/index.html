@@ -52,6 +52,8 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/page_add_flight/index.html">Add Flight</a
               >
+              <a class="dropdown-item" href="/page_search_flight/index.html">Search/Edit Flight</a
+                >
               <a class="dropdown-item" href="/page_book_ticket/index.html"
                 >Book Ticket</a
               >
@@ -146,14 +148,12 @@
 
 
 
-                            <footer class="bg-body-tertiary text-center text-lg-start" style="position: absolute; bottom: 0; width: 100%">
-                                <!-- Copyright -->
+                            <!-- <footer class="bg-body-tertiary text-center text-lg-start" style="position: absolute; bottom: 0; width: 100%">
                                 <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05)">
                                     © 2024 Copyright:
                                     <a class="text-body" href="#">Flight Reservation System</a>
                             </div>
-                            <!-- Copyright -->
-                            </footer>
+                            </footer> -->
                             <style type="text/css">
                                 @media print {
                                     #print-btn,
@@ -169,7 +169,7 @@
                                     window.print();
                                 });
                                 $.ajax({
-                                    url: `/flight/`,
+                                    url: `/flight/all`,
                                     dataType: "json",
                                     type: "get",
                                     success: function(data, textStatus, jQxhr) {
